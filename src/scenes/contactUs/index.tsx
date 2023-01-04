@@ -38,7 +38,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           }}
         >
           <HText>
-            <span className="text-primary-500">JUNTA-TE A NÓS </span>E COMEÇA
+            <span className="text-secondary-60">JUNTA-TE A NÓS </span>E COMEÇA
             HOJE A DANÇAR
           </HText>
           <p className="my-5">
@@ -74,7 +74,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 {...register("name", { required: true, maxLength: 50 })}
               />
               {errors.name && (
-                <p className="mt-1 text-primary-500">
+                <p className="mt-1 text-secondary-60">
                   {errors.name.type === "required" &&
                     "Este campo necessita de ser preenchido."}
                   {errors.name.type === "maxLength" &&
@@ -91,7 +91,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 })}
               />
               {errors.email && (
-                <p className="mt-1 text-primary-500">
+                <p className="mt-1 text-secondary-60">
                   {errors.email.type === "required" &&
                     "Este campo necessita de ser preenchido."}
                   {errors.email.type === "pattern" &&
@@ -106,7 +106,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 {...register("message", { required: true, maxLength: 2000 })}
               />
               {errors.message && (
-                <p className="mt-1 text-primary-500">
+                <p className="mt-1 text-secondary-60">
                   {errors.message.type === "required" &&
                     "Este campo necessita de ser preenchido."}
                   {errors.message.type === "maxLength" &&
@@ -115,7 +115,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               )}
               <button
                 type="submit"
-                className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:bg-primary-500 hover:text-white"
+                className="hover:text-white mt-5 rounded-lg bg-secondary px-20 py-3 transition duration-500 hover:bg-primary-500"
               >
                 SUBMIT
               </button>
