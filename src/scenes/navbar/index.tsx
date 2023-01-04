@@ -16,7 +16,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const navbarBackground = isTopOfPage ? "bg-primary-100 drop-shadow" : "";
+  const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
 
   return (
     <nav>
@@ -37,12 +37,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="Modalidades"
+                    page="História"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="Horários"
+                    page="Modalidades"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
@@ -87,6 +87,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           <div className=" ml-[33%] flex flex-col gap-10 text-2xl">
             <Link
               page="Início"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="História"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
