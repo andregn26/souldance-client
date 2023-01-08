@@ -1,35 +1,31 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SelectedPage } from "@/shared/types";
 import ActionButton from "@/shared/ActionButton";
-import HomePageText from "@/assets/HomePageText.svg";
-import HomePageGraphic from "@/assets/HomePageGraphic1.svg";
+import HomePageText from "@/assets/HomePageText-01.svg";
+import image05 from "@/assets/image05.png";
+import HomePageGraphic from "@/assets/HomePageGraphic1.png";
 import SponsorRedBull from "@/assets/SponsorRedBull.png";
 import SponsorForbes from "@/assets/SponsorForbes.png";
 import SponsorFortune from "@/assets/SponsorFortune.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
 import ScheduleModal from "@/shared/ScheduleModal";
-import { CSSProperties, useState } from "react";
+import { useState } from "react";
+import ActionButton1 from "@/shared/ActionButton1";
 
-import useScrollLock from "@/hooks/useScrollLock";
+type Props = {
+  setSelectedPage: (value: SelectedPage) => void;
+  showModal: (value: any) => void;
+  isShowModal: boolean;
+};
 
-type Props = { setSelectedPage: (value: SelectedPage) => void };
-
-const Home = ({ setSelectedPage }: Props) => {
-  const [locked, setLocked] = useScrollLock(false, "root");
-
+const Home = ({ setSelectedPage, showModal, isShowModal }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const [isShowModal, setIsShowModal] = useState(false);
-
-  const showModal = () => {
-    setIsShowModal(!isShowModal);
-    setLocked(!locked);
-  };
 
   return (
     <section
       id="início"
-      className=" gap-16 bg-light-secondary py-6 md:h-full md:pb-0"
+      className=" gap-16 bg-gradient-to-br from-black-90 to-black-60 py-6 md:h-full md:pb-0"
     >
       {/* IMAGE AND MAIN HEADER */}
       <motion.div
@@ -37,7 +33,7 @@ const Home = ({ setSelectedPage }: Props) => {
         onViewportEnter={() => setSelectedPage(SelectedPage.Início)}
       >
         {/*MAIN HEADER */}
-        <div className="z-10 mt-32 md:basis-3/5">
+        <div className="z-10 mt-24 md:mt-32 md:basis-3/5">
           {/*HEADINGS*/}
           <motion.div
             className="md:-mt-20"
@@ -51,19 +47,18 @@ const Home = ({ setSelectedPage }: Props) => {
             }}
           >
             <div className="relative">
-              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
-                <img src={HomePageText} alt="home-page-text" />
+              <div className="before:absolute before:-right-[-50px] before:-top-20 before:z-[-1] before:w-[100%] md:before:content-evolvetext">
+                <img
+                  className="ml-[-10px] w-[90%] max-w-[580px]"
+                  src={HomePageText}
+                  alt="home-page-text"
+                />
               </div>
             </div>
-            <p className="mt-8 text-sm md:text-start">
-              Unrivaled Gym. Unparalleled Training Fitness Classes. World Class
-              Studios to get the Body Shapes That you Dream of.. Get Your Dream
-              Body Now.
-            </p>
           </motion.div>
           {/*ACTIONS */}
           <motion.div
-            className="mt-8 flex items-center gap-8"
+            className="mt-8 items-center gap-8 xs:flex sm:mt-16 "
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -73,30 +68,34 @@ const Home = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Junta-te a Nós
-            </ActionButton>
-            <button
-              className="hover:text-secondary-60-500 text-sm font-bold text-secondary-60 underline"
-              onClick={showModal}
-            >
-              Horários 22/23
-            </button>
+            <div className="mb-5 w-[200px]">
+              <ActionButton1 setSelectedPage={setSelectedPage}>
+                Junta-te a Nós
+              </ActionButton1>
+            </div>
+            <div className="mb-5">
+              <button
+                className="hover:text-purple-lighter1-500 text-sm font-bold text-purple-lighter1 underline xs:w-auto"
+                onClick={showModal}
+              >
+                Horários 22/23
+              </button>
+            </div>
           </motion.div>
         </div>
 
         {/*IMAGE */}
-        <div className="flex basis-3/5 justify-center  md:ml-40 md:mt-16 md:justify-items-end">
+        <div className="flex basis-2/5 justify-center   md:mt-8 md:justify-items-end">
           <img
-            className="mt-16 md:h-[500px]"
+            className="mt-16  "
             src={HomePageGraphic}
-            alt="home-pageGraphic"
+            alt="homePageGraphic"
           />
         </div>
       </motion.div>
       {/*USP */}
       {isAboveMediumScreens && (
-        <div className="h-[150px] w-full bg-primary-10 py-10">
+        <div className="h-[150px] w-full bg-black-70 py-10">
           <div className="mx-auto w-5/6">
             <div className="flex w-3/5 items-center justify-between gap-8">
               {/* <img alt="redbull-sponsor" src={SponsorRedBull} />
@@ -107,11 +106,7 @@ const Home = ({ setSelectedPage }: Props) => {
         </div>
       )}
       {isShowModal ? (
-        <ScheduleModal
-          isShowModal={isShowModal}
-          setIsShowModal={setIsShowModal}
-          title="Horários 22/23"
-        />
+        <ScheduleModal showModal={showModal} title="Horários 22/23" />
       ) : null}
     </section>
   );

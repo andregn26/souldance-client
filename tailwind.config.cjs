@@ -3,62 +3,67 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      light: {
-        DEFAULT: "#F3F2F7",
-        secondary: "#FAF0F3",
-        alt: "#F2F6F7",
+      white: {
+        //previus Light
+        DEFAULT: "#EBF2FA",
+        blue: "#E6EAEF",
+        purple: "#FAEBFE", //! primary color white shade
       },
-      dark: {
-        DEFAULT: "black",
-        secondary: "#FAF0F3",
-        alt: "#F2F6F7",
+      black: {
+        100: "#0A0A0B",
+        90: "#131315",
+        80: "#1D1D20",
+        70: "#27272B",
+        60: "#303036",
+        main: "#3A3A41",
+        white: "#EAEAEC",
       },
-      primary: {
-        DEFAULT: "#685C99",
-        40: "#F6F4F3",
-        10: "#E8E6EF",
+      purple: {
+        darker: "#D764F7",
+        darker1: "#6C0788",
+        main: "#DC77F8",
+        lighter: "#eac6ea",
+        lighter1: "#DF94F7",
+        white: "#FAEBFE",
+      },
+      blue: {
+        darker: "#42c6ea",
+        main: "#1EAFC2",
+        lighter: "#eac6ea",
+        alt1: "#42c6ea",
       },
       secondary: {
         100: "#1f0a11",
-        90: "#3d1421",
+        90: "#FFF9EC",
         80: "#5c1f31",
         70: "#7a2941",
-        60: "#d03969",
-        DEFAULT: "#b83d62",
+        60: "#9FA0C3",
+        main: "#b83d62",
         40: "#F183A8",
         30: "#d27494",
         20: "#dc93ab",
         10: "#faf0f3",
       },
       alt: {
-        DEFAULT: "#fcba04",
-        40: "#00e8fc",
+        DEFAULT: "#B709EC", //Main Button
+        40: "#00e8fc", //
         30: "#c42021",
         20: "#ebc2ce",
         10: "#faf0f3",
       },
-      "light-primary-10": "dark",
-      "light-primary-main": "#E8E6F0",
-      "light-secondary-40": "dark",
-      "light-secondary-main": "dark",
-      "light-gray-10": "#F6F4F3",
-      "light-gray-20": "#F6F4F3",
-      "light-text-60": "#C85676",
-      "light-text-70": "dark",
-      "light-text-80": "dark",
-      "light-text-90": "dark",
+    },
+    screens: {
+      xs: "480px",
+      sm: "768px",
+      md: "1060px",
     },
     extend: {
-      colors: {
-        "gray-20": "#f8f4eb",
-        "gray-50": "#efe6e6",
-        "gray-100": "#dfcccc",
-        "gray-500": "#593652",
-        "primary-100": "#ffe1e0",
-        "primary-300": "#ffa6a3",
-        "primary-500": "#1BDAD7",
-        "secondary-400": "#ffcd5b",
-        "secondary-500": "#ffc132",
+      backgroundSize: {
+        "size-200": "200% 200%",
+      },
+      backgroundPosition: {
+        "pos-0": "0% 0%",
+        "pos-100": "100% 100%",
       },
       backgroundImage: (theme) => ({
         gradient:
@@ -75,11 +80,22 @@ module.exports = {
         sparkles: "url('./assets/Sparkles.png')",
         circles: "url('./assets/Circles.png')",
       },
-    },
-    screens: {
-      xs: "480px",
-      sm: "768px",
-      md: "1060px",
+      animation: {
+        tilt: "tilt 5s infinite, linear",
+      },
+      keyframes: {
+        tilt: {
+          "0, 50%, 100%": {
+            transform: "rotate(0deg)",
+          },
+          "25%": {
+            transform: " rotate(5deg)",
+          },
+          "75%": {
+            transform: " rotate(-5deg)",
+          },
+        },
+      },
     },
   },
   plugins: [],

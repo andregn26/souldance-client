@@ -6,12 +6,20 @@ import { SelectedPage } from "@/shared/types";
 import OurClasses from "@/scenes/ourClasses";
 import ContactUs from "@/scenes/contactUs";
 import Footer from "./scenes/footer";
+import useScrollLock from "@/hooks/useScrollLock";
 
 function App() {
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [locked, setLocked] = useScrollLock(false, "root");
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
     SelectedPage.Início
   );
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+
+  const showModal = () => {
+    setIsShowModal(!isShowModal);
+    setLocked(!locked);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,11 +40,19 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <Home setSelectedPage={setSelectedPage} />
-      <Beneficts setSelectedPage={setSelectedPage} />
+      <Home
+        showModal={showModal}
+        isShowModal={isShowModal}
+        setSelectedPage={setSelectedPage}
+      />
+      <Beneficts
+        showModal={showModal}
+        isShowModal={isShowModal}
+        setSelectedPage={setSelectedPage}
+      />
       <OurClasses setSelectedPage={setSelectedPage} />
       <ContactUs setSelectedPage={setSelectedPage} />
-      {/* <Footer setSelectedPage={setSelectedPage} /> */}
+      <Footer setSelectedPage={setSelectedPage} />
     </div>
   );
 }

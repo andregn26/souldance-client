@@ -1,4 +1,4 @@
-import ActionButton from "@/shared/ActionButton";
+import ActionButton1 from "@/shared/ActionButton1";
 import HText from "@/shared/HText";
 import { SelectedPage, BenefitType } from "@/shared/types";
 import {
@@ -9,6 +9,9 @@ import {
 import { motion } from "framer-motion";
 import Benefit from "./Benefit";
 import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic1.png";
+import Benefit3 from "./Benefit3";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import MobileSwiper from "./MobileSwiper";
 
 const benefits: Array<BenefitType> = [
   {
@@ -31,18 +34,16 @@ Fortalecer ou criar laços num Team Building ou dar um toque de magia e glamour 
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 },
-  },
+type Props = {
+  setSelectedPage: (value: SelectedPage) => void;
+  showModal: (value: any) => void;
+  isShowModal: boolean;
 };
 
-type Props = { setSelectedPage: (value: SelectedPage) => void };
-
-const Beneficts = ({ setSelectedPage }: Props) => {
+const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 768px)");
   return (
-    <div className="w-full bg-light-alt">
+    <div className="w-full bg-black-80">
       <section id="história" className="mx-auto min-h-full w-5/6  py-20">
         <motion.div
           onViewportEnter={() => setSelectedPage(SelectedPage.História)}
@@ -59,35 +60,35 @@ const Beneficts = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <HText>MAIS QUE UMA ESCOLA DE DANÇA</HText>
-            <p className="my-5 text-sm">
-              Em 2018, a SoulDance foi fundada com uma simples missão: Fazer da
-              dança uma parte integrante da vida de todos nós. Com a entrega e
-              dedicação dos mais conceituados professores do mercado,
-              trabalhamos para construir um lugar onde os nossos alunos são
-              estimulados a descobrir, sem receios, todo o seu potencial e a
-              criar uma comunidade assente na diversidade e inclusão ligada pela
-              dança.
-            </p>
+            <HText>OS NOSSOS SERVIÇOS</HText>
           </motion.div>
+
           {/* BENEFITS */}
-          <motion.div
-            className="mt-5 items-center justify-between gap-8 md:flex"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={container}
-          >
-            {benefits.map((benefit: BenefitType) => (
-              <Benefit
-                key={benefit.title}
-                icon={benefit.icon}
-                title={benefit.title}
-                description={benefit.description}
-                setSelectedPage={setSelectedPage}
-              />
-            ))}
-          </motion.div>
+          {isAboveMediumScreens ? (
+            <>
+              {" "}
+              <motion.div
+                className="mt-5 items-center justify-between gap-8 md:flex"
+                initial="hidden"
+                whileInView="visible"
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: { staggerChildren: 0.2 },
+                  },
+                }}
+              >
+                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+              </motion.div>
+            </>
+          ) : (
+            <>
+              <MobileSwiper isShowModal={isShowModal} showModal={showModal} />
+            </>
+          )}
+
           {/* GRAPHICS AND DESCRIPTION */}
           <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
             {/* GRAPHIC */}
@@ -112,8 +113,8 @@ const Beneficts = ({ setSelectedPage }: Props) => {
                     }}
                   >
                     <HText>
-                      DANÇA AO RITMO DA TUA{" "}
-                      <span className="text-secondary-60">ALMA</span>
+                      MAIS QUE UMA ESCOLA DE
+                      <span className="text-purple-lighter1"> DANÇA</span>
                     </HText>
                   </motion.div>
                 </div>
@@ -130,26 +131,24 @@ const Beneficts = ({ setSelectedPage }: Props) => {
                 }}
               >
                 <p className="my-5">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Alias eaque nesciunt fuga praesentium nisi officia iure enim
-                  aliquid dolorem dicta eius, vero perferendis atque rerum
-                  blanditiis ab. Quam, natus illum!
+                  Na SoulDance acreditamos que a dança é para todos e
+                  esforçamo-nos por criar um ambiente acolhedor e inclusivo onde
+                  os nossos alunos possam crescerir da rotina.
                 </p>
                 <p className="mb-5">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Alias eaque nesciunt fuga praesentium nisi officia iure enim
-                  aliquid dolorem dicta eius, vero perferendis atque rerum
-                  blanditiis ab. Quam, natus illum!
+                  Mais do que apenas um hobby, a dança é uma forma de nos
+                  expressarmos através do movimento. Quer estejas apenas a
+                  começar ou tenhas experiência, os nossos alunos e professores
+                  irá apoiar-te na tua viagem para desenvolveres a tua paixão
+                  pela dança. <br /> <br /> <b>Quem dança é mais feliz...</b>
                 </p>
               </motion.div>
               {/* BUTTON */}
-              <div className="relative mt-16">
-                <div className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles">
-                  <ActionButton setSelectedPage={setSelectedPage}>
-                    Junta-te a Nós
-                  </ActionButton>
-                </div>
-              </div>
+              <div className=" mt-16 ">
+                <ActionButton1 setSelectedPage={setSelectedPage}>
+                  Junta-te a Nós
+                </ActionButton1>
+              </div>{" "}
             </div>
           </div>
         </motion.div>

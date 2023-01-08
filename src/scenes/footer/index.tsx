@@ -10,7 +10,7 @@ type Props = { setSelectedPage: (value: SelectedPage) => void };
 const Footer = ({ setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between";
   return (
-    <footer className={` mt-40 h-48 w-full items-center bg-primary-10 py-10`}>
+    <footer className={` h-48 w-full items-center bg-black-90 py-10 pt-40`}>
       <div className={`md:${flexBetween} mx-auto w-5/6 md:place-items-start`}>
         <div className="w-1/3 ">logo</div>
         {/* SOCIAL */}

@@ -46,7 +46,7 @@ type Props = { setSelectedPage: (value: SelectedPage) => void };
 
 const OurClasses = ({ setSelectedPage }: Props) => {
   return (
-    <section id="modalidades" className="w-full bg-primary-10 py-40">
+    <section id="modalidades" className="w-full bg-black-70 py-40">
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.Modalidades)}
       >
@@ -70,7 +70,7 @@ const OurClasses = ({ setSelectedPage }: Props) => {
           </p>
         </motion.div>
 
-        <div className="mt-10 h-[100%] w-[screen] overflow-x-auto overflow-y-hidden">
+        <div className="mt-10 h-[100%] w-[100%] overflow-x-auto overflow-y-hidden">
           {/* CARROUSSEL */}
           <ul className="w-[1500px] whitespace-nowrap">
             {classes.map((item: ClassType, index) => (
