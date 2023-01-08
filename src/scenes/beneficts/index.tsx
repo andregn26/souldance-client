@@ -9,24 +9,26 @@ import {
 import { motion } from "framer-motion";
 import Benefit from "./Benefit";
 import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic1.png";
-import Benefit3 from "./Benefit3";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import MobileSwiper from "./MobileSwiper";
 
 const benefits: Array<BenefitType> = [
   {
+    index: 1,
     icon: <HomeModernIcon className="h-6 w-6" />,
     title: "Aulas de Dança",
     description: `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam posuere odio ex, sed feugiat lorem tristique nec. Proin id laoreet turpis. Mauris tincidunt vel mi euismod facilisis. Curabitur fermentum, dolor et vestibulum semper, velit lorem tincidunt risus. `,
+Lorem ipsum dolor sit amet,  `,
   },
   {
+    index: 2,
     icon: <UserGroupIcon className="h-6 w-6" />,
     title: "Aulas para Noivos",
     description: `
 Um dos momentos mais marcantes de um casamento é aquele no qual o casal expressa o seu amor e felicidade através da dança. Para que esse instante seja inesquecível, será melhor coreografar os passos a serem dados com uma equipa profissional, criativa e dedicada.`,
   },
   {
+    index: 3,
     icon: <AcademicCapIcon className="h-6 w-6" />,
     title: "Eventos Corporativos",
     description: `
@@ -36,17 +38,15 @@ Fortalecer ou criar laços num Team Building ou dar um toque de magia e glamour 
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
-  showModal: (value: any) => void;
-  isShowModal: boolean;
 };
 
-const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 768px)");
+const Beneficts = ({ setSelectedPage }: Props) => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
     <div className="w-full bg-black-80">
-      <section id="história" className="mx-auto min-h-full w-5/6  py-20">
+      <section id="serviços" className="mx-auto min-h-full w-5/6  py-20">
         <motion.div
-          onViewportEnter={() => setSelectedPage(SelectedPage.História)}
+          onViewportEnter={() => setSelectedPage(SelectedPage.Serviços)}
         >
           {/* HEADER */}
           <motion.div
@@ -68,7 +68,7 @@ const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
             <>
               {" "}
               <motion.div
-                className="mt-5 items-center justify-between gap-8 md:flex"
+                className="mt-5 flex items-start justify-between gap-8"
                 initial="hidden"
                 whileInView="visible"
                 variants={{
@@ -78,14 +78,23 @@ const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
                   },
                 }}
               >
-                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
-                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
-                <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+                {benefits.map((benefit: BenefitType) => (
+                  <Benefit
+                    key={benefit.title}
+                    icon={benefit.icon}
+                    title={benefit.title}
+                    description={benefit.description}
+                    setSelectedPage={setSelectedPage}
+                  />
+                ))}
               </motion.div>
             </>
           ) : (
             <>
-              <MobileSwiper isShowModal={isShowModal} showModal={showModal} />
+              <MobileSwiper
+                benefits={benefits}
+                setSelectedPage={setSelectedPage}
+              />
             </>
           )}
 
@@ -98,7 +107,10 @@ const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
               alt="benefits-page-graphic"
             />
             {/* DESCRIPTION */}
-            <div>
+            <motion.div
+              id="história"
+              onViewportEnter={() => setSelectedPage(SelectedPage.História)}
+            >
               {/* TITLE */}
               <div className="relative">
                 <div className="before:-lef-20 before:absolute before:-top-20 before:z-[-1] before:content-abstractwaves">
@@ -149,7 +161,7 @@ const Beneficts = ({ setSelectedPage, showModal, isShowModal }: Props) => {
                   Junta-te a Nós
                 </ActionButton1>
               </div>{" "}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </section>

@@ -56,6 +56,7 @@ module.exports = {
       xs: "480px",
       sm: "768px",
       md: "1060px",
+      xl: "1536px",
     },
     extend: {
       backgroundSize: {

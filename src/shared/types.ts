@@ -1,5 +1,6 @@
 export enum SelectedPage {
   Início = "início",
+  Serviços = "serviços",
   História = "história",
   Modalidades = "modalidades",
   Horários = "horários",
@@ -8,6 +9,7 @@ export enum SelectedPage {
 }
 
 export interface BenefitType {
+  index: Number;
   icon: JSX.Element;
   title: string;
   description: string;

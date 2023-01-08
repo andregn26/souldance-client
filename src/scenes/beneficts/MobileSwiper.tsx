@@ -1,8 +1,8 @@
 import React from "react";
-import ModalBenefit3 from "./ModalBenefit3";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import Benefit3 from "./Benefit3";
+import { SelectedPage, BenefitType } from "@/shared/types";
+import Benefit from "./Benefit";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,19 +11,59 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper";
 
-type Props = { showModal: (isShow: any) => void; isShowModal: boolean };
+type Props = {
+  benefits: Array<BenefitType>;
+  setSelectedPage: (value: SelectedPage) => void;
+};
 
-const MobileSwiper = ({ showModal, isShowModal }: Props) => {
+const MobileSwiper = ({ benefits, setSelectedPage }: Props) => {
   return (
-    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+    <Swiper
+      navigation={true}
+      modules={[Navigation]}
+      className="mySwiper"
+      style={{
+        "--swiper-navigation-color": "#fff",
+      }}
+    >
       <SwiperSlide>
-        <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+        {benefits
+          .filter((benefit) => benefit.index === 1)
+          .map((filteredBenefit) => (
+            <Benefit
+              key={filteredBenefit.title}
+              icon={filteredBenefit.icon}
+              title={filteredBenefit.title}
+              description={filteredBenefit.description}
+              setSelectedPage={setSelectedPage}
+            />
+          ))}
       </SwiperSlide>
       <SwiperSlide>
-        <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+        {benefits
+          .filter((benefit) => benefit.index === 2)
+          .map((filteredBenefit) => (
+            <Benefit
+              key={filteredBenefit.title}
+              icon={filteredBenefit.icon}
+              title={filteredBenefit.title}
+              description={filteredBenefit.description}
+              setSelectedPage={setSelectedPage}
+            />
+          ))}
       </SwiperSlide>
       <SwiperSlide>
-        <Benefit3 showModal={showModal} isShowModal={isShowModal} />
+        {benefits
+          .filter((benefit) => benefit.index === 3)
+          .map((filteredBenefit) => (
+            <Benefit
+              key={filteredBenefit.title}
+              icon={filteredBenefit.icon}
+              title={filteredBenefit.title}
+              description={filteredBenefit.description}
+              setSelectedPage={setSelectedPage}
+            />
+          ))}
       </SwiperSlide>
     </Swiper>
   );

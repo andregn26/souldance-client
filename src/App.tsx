@@ -1,7 +1,8 @@
-import Navbar from "@/scenes/navbar";
-import Home from "@/scenes/home";
-import Beneficts from "@/scenes/beneficts";
 import { useState, useEffect } from "react";
+import Home from "@/scenes/home";
+import Navbar from "@/scenes/navbar";
+import HomeTest from "./scenes/homeTest";
+import Beneficts from "@/scenes/beneficts";
 import { SelectedPage } from "@/shared/types";
 import OurClasses from "@/scenes/ourClasses";
 import ContactUs from "@/scenes/contactUs";
@@ -40,19 +41,15 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <Home
+      <HomeTest
         showModal={showModal}
         isShowModal={isShowModal}
         setSelectedPage={setSelectedPage}
       />
-      <Beneficts
-        showModal={showModal}
-        isShowModal={isShowModal}
-        setSelectedPage={setSelectedPage}
-      />
-      <OurClasses setSelectedPage={setSelectedPage} />
+      <Beneficts setSelectedPage={setSelectedPage} />
+      {/* <OurClasses setSelectedPage={setSelectedPage} />
       <ContactUs setSelectedPage={setSelectedPage} />
-      <Footer setSelectedPage={setSelectedPage} />
+      <Footer setSelectedPage={setSelectedPage} /> */}
     </div>
   );
 }

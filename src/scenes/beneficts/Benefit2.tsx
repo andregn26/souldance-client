@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import CorporateIcon from "@/assets/corporate-icon.png";
+import WeddingIcon from "@/assets/wedding-icon.png";
 
 type Props = {};
 
@@ -16,15 +16,15 @@ const Benefit3 = ({}: Props) => {
         >
           <div className="mb-4 flex justify-center">
             <div className=" rounded-full bg-gradient-to-tl  from-blue-darker to-purple-darker1 p-4">
-              <img src={CorporateIcon} alt="Dance-Icon" className="h-6 w-6" />
+              <img src={WeddingIcon} alt="Dance-Icon" className="h-6 w-6" />
             </div>
           </div>
-          <h4 className="text-lg font-bold">Eventos Corporativos</h4>
+          <h4 className=" text-lg font-bold">Aulas para Noivos</h4>
           <p className="text-wrap my-3 text-sm">
-            Fortalecer ou criar laços num Team Building ou dar um toque de magia
-            e glamour a festas temáticas - Conheça as variadas formas de
-            utilizar a dança como uma forma de agregar valor a eventos
-            corporativos e cativar a sua audiência. Conheça as nossas ofertas!
+            Um dos momentos mais marcantes de um casamento é aquele no qual o
+            casal expressa o seu amor e felicidade através da dança. Para que
+            esse instante seja inesquecível, será melhor coreografar os passos a
+            serem dados com uma equipa profissional, criativa e dedicada.
           </p>
           <button className="hover:text-purple-lighter1-500 text-sm font-bold text-purple-lighter1 underline">
             Sabe Mais

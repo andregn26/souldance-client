@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import CorporateIcon from "@/assets/corporate-icon.png";
+import DanceIcon from "@/assets/dance-icon.png";
 
 type Props = {};
 
@@ -16,15 +16,12 @@ const Benefit3 = ({}: Props) => {
         >
           <div className="mb-4 flex justify-center">
             <div className=" rounded-full bg-gradient-to-tl  from-blue-darker to-purple-darker1 p-4">
-              <img src={CorporateIcon} alt="Dance-Icon" className="h-6 w-6" />
+              <img src={DanceIcon} alt="Dance-Icon" className="h-6 w-6" />
             </div>
           </div>
-          <h4 className="text-lg font-bold">Eventos Corporativos</h4>
-          <p className="text-wrap my-3 text-sm">
-            Fortalecer ou criar laços num Team Building ou dar um toque de magia
-            e glamour a festas temáticas - Conheça as variadas formas de
-            utilizar a dança como uma forma de agregar valor a eventos
-            corporativos e cativar a sua audiência. Conheça as nossas ofertas!
+          <h4 className="font-bold">Aulas de Dança</h4>
+          <p className="text-wrap my-3">
+            Lorem ipsum dolor sit amet, consectetur
           </p>
           <button className="hover:text-purple-lighter1-500 text-sm font-bold text-purple-lighter1 underline">
             Sabe Mais

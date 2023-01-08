@@ -25,18 +25,18 @@ const Home = ({ setSelectedPage, showModal, isShowModal }: Props) => {
   return (
     <section
       id="início"
-      className=" gap-16 bg-gradient-to-br from-black-90 to-black-60 py-6 md:h-full md:pb-0"
+      className="relative min-h-screen gap-16 bg-gradient-to-br from-black-90 to-black-60 py-6 md:flex md:min-h-full "
     >
       {/* IMAGE AND MAIN HEADER */}
       <motion.div
-        className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
+        className="mx-auto w-5/6 items-center md:flex md:h-5/6 md:justify-center md:self-center"
         onViewportEnter={() => setSelectedPage(SelectedPage.Início)}
       >
         {/*MAIN HEADER */}
-        <div className="z-10 mt-24 md:mt-32 md:basis-3/5">
+        <div className=" mt-24 md:basis-3/5">
           {/*HEADINGS*/}
           <motion.div
-            className="md:-mt-20"
+            className=""
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -49,7 +49,7 @@ const Home = ({ setSelectedPage, showModal, isShowModal }: Props) => {
             <div className="relative">
               <div className="before:absolute before:-right-[-50px] before:-top-20 before:z-[-1] before:w-[100%] md:before:content-evolvetext">
                 <img
-                  className="ml-[-10px] w-[90%] max-w-[580px]"
+                  className="ml-[-10px] w-[90%] max-w-[500px]"
                   src={HomePageText}
                   alt="home-page-text"
                 />
@@ -85,29 +85,63 @@ const Home = ({ setSelectedPage, showModal, isShowModal }: Props) => {
         </div>
 
         {/*IMAGE */}
-        <div className="flex basis-2/5 justify-center   md:mt-8 md:justify-items-end">
-          <img
-            className="mt-16  "
-            src={HomePageGraphic}
-            alt="homePageGraphic"
-          />
+        <div className="z-20 flex basis-2/5 justify-center   md:justify-items-end">
+          <img src={HomePageGraphic} alt="homePageGraphic" />
         </div>
       </motion.div>
-      {/*USP */}
+      {/*BOTTOM BAR */}
       {isAboveMediumScreens && (
-        <div className="h-[150px] w-full bg-black-70 py-10">
-          <div className="mx-auto w-5/6">
-            <div className="flex w-3/5 items-center justify-between gap-8">
-              {/* <img alt="redbull-sponsor" src={SponsorRedBull} />
-              <img alt="forbes-sponsor" src={SponsorForbes} />
-              <img alt="fortune-sponsor" src={SponsorFortune} /> */}
-            </div>
+        <div className=" absolute bottom-0  h-[150px] w-full  bg-black-70 ">
+          <div className="mx-auto flex h-[100%] w-5/6 items-center">
+            <motion.div
+              className="flex h-[50%] w-3/5 items-center justify-between  gap-8"
+              initial="hidden"
+              whileInView="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.2 },
+                },
+              }}
+            >
+              <motion.div
+                className=" w-full "
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: { opacity: 1, scale: 1 },
+                }}
+              >
+                <span className="text-5xl font-bold">18</span> <br />
+                MODALIDADES
+              </motion.div>
+
+              <motion.div
+                className=" w-full"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: { opacity: 1, scale: 1 },
+                }}
+              >
+                <span className="text-5xl font-bold">15</span> <br />
+                PROFESSORES
+              </motion.div>
+              <motion.div
+                className=" w-full"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: { opacity: 1, scale: 1 },
+                }}
+              >
+                <span className="text-5xl font-bold">200</span> <br />
+                ALUNOS
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       )}
-      {isShowModal ? (
+      {isShowModal && (
         <ScheduleModal showModal={showModal} title="Horários 22/23" />
-      ) : null}
+      )}
     </section>
   );
 };
