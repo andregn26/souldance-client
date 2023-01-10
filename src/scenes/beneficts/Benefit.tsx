@@ -19,7 +19,7 @@ const Benefit = ({ icon, title, description, setSelectedPage }: Props) => {
     <>
       {/* ROOT BOX */}
       <motion.div
-        className="mt-5 flex min-h-[480px] flex-col justify-between whitespace-normal rounded-md bg-black-70 px-5 py-10 text-center sm:min-h-[380px]"
+        className="mt-5 flex min-h-[480px] flex-col justify-between whitespace-normal rounded-md bg-black-70 px-5 py-10 text-center sm:min-h-[380px] md:min-h-[500px] md:w-1/3"
         variants={childVariant}
       >
         {/* ICON BOX */}
