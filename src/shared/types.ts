@@ -9,7 +9,7 @@ export enum SelectedPage {
 }
 
 export interface BenefitType {
-  index: Number;
+  index?: Number;
   icon: JSX.Element;
   title: string;
   description: string;

@@ -18,14 +18,7 @@ type Props = {
 
 const MobileSwiper = ({ benefits, setSelectedPage }: Props) => {
   return (
-    <Swiper
-      navigation={true}
-      modules={[Navigation]}
-      className="mySwiper"
-      style={{
-        "--swiper-navigation-color": "#fff",
-      }}
-    >
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
       <SwiperSlide>
         {benefits
           .filter((benefit) => benefit.index === 1)
