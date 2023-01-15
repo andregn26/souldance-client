@@ -20,3 +20,9 @@ export interface ClassType {
   description?: string;
   image: string;
 }
+
+export interface ProfessorType {
+  name: string;
+  modality?: string;
+  image?: string;
+}

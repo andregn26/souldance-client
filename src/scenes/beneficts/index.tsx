@@ -43,8 +43,8 @@ type Props = {
 const Beneficts = ({ setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
-    <div className="w-full bg-black-80">
-      <section id="serviços" className="mx-auto min-h-full w-5/6  py-20">
+    <div className="min-h-full w-full bg-black-80">
+      <section id="serviços" className="mx-auto  w-5/6  pt-20 ">
         <motion.div
           onViewportEnter={() => setSelectedPage(SelectedPage.Serviços)}
         >
@@ -97,8 +97,13 @@ const Beneficts = ({ setSelectedPage }: Props) => {
               />
             </>
           )}
-
-          {/* GRAPHICS AND DESCRIPTION */}
+        </motion.div>{" "}
+      </section>{" "}
+      {/* GRAPHICS AND DESCRIPTION */}
+      <section id="história" className="mx-auto w-5/6 pt-8 pb-36">
+        <motion.div
+          onViewportEnter={() => setSelectedPage(SelectedPage.História)}
+        >
           <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
             {/* GRAPHIC */}
             <img

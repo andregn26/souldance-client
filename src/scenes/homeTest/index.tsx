@@ -27,10 +27,10 @@ const HomeTest = ({ setSelectedPage, showModal, isShowModal }: Props) => {
       {/* ROOT BOX */}
       <section
         id="início"
-        className=" grid h-screen w-full grid-rows-[100%_0] bg-gradient-to-br from-black-90 to-black-60 md:grid-rows-[85%_15%]"
+        className=" grid min-h-screen w-full grid-rows-[100%_0] bg-gradient-to-br from-black-90 to-black-60 md:grid-rows-[85%_15%]"
       >
         {/* MAIN BOX */}
-        <div className="mx-auto mt-16 w-5/6 self-center md:mt-28  ">
+        <div className="mx-auto mt-36 w-5/6 self-center md:mt-28  ">
           <motion.div
             className=" grid h-full flex-col  gap-8 md:grid-cols-[50%_50%] md:flex-row md:gap-24 xl:gap-24 "
             onViewportEnter={() => setSelectedPage(SelectedPage.Início)}
@@ -140,6 +140,7 @@ const HomeTest = ({ setSelectedPage, showModal, isShowModal }: Props) => {
             </div>
           </>
         )}
+        {/* MODAL */}
         {isShowModal && (
           <ScheduleModal showModal={showModal} title="Horários 22/23" />
         )}

@@ -3,8 +3,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
 import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
 import HText from "@/shared/HText";
+import ActionButton1 from "@/shared/ActionButton1";
 
-const inputStyles = `w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white mb-5`;
+const inputStyles = `w-full rounded-lg bg-black-60 px-5 py-3 placeholder-white mb-5`;
 
 type Props = { setSelectedPage: (value: SelectedPage) => void };
 
@@ -21,7 +22,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
     }
   };
   return (
-    <section id="contactos" className=" h-full bg-black-90 pt-24">
+    <section id="contactos" className=" min-h-full bg-black-90 py-24">
       <div className="mx-auto w-5/6 ">
         <motion.div
           onViewportEnter={() => setSelectedPage(SelectedPage.Contactos)}
@@ -42,12 +43,6 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               <span className="text-purple-lighter1">JUNTA-TE A NÓS </span>E
               COMEÇA HOJE A DANÇAR
             </HText>
-            <p className="my-5">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
-              adipisci maxime impedit ullam est quis in. Rem numquam commodi
-              voluptate et iste earum dolorum debitis tempore? Molestiae, earum
-              numquam! Placeat.
-            </p>
           </motion.div>
           {/* FORM AND IMAGE */}
           <div className="mt-10 justify-between gap-8 md:flex">
@@ -68,37 +63,40 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 onSubmit={onSubmit}
                 method="POST"
               >
-                <input
-                  className={inputStyles}
-                  type="text"
-                  placeholder="NOME"
-                  {...register("name", { required: true, maxLength: 50 })}
-                />
                 {errors.name && (
-                  <p className="mt-1 text-purple-lighter1">
+                  <p className="mb-1 text-purple-lighter1">
                     {errors.name.type === "required" &&
                       "Este campo necessita de ser preenchido."}
                     {errors.name.type === "maxLength" &&
                       "Este campo ultrapassa os 50 caracteres permitidos."}
                   </p>
                 )}
+                <input
+                  className={inputStyles}
+                  type="text"
+                  placeholder="NOME"
+                  {...register("name", { required: true, maxLength: 50 })}
+                />{" "}
                 <select
                   className={`${inputStyles} text-light`}
                   {...register("option", { required: true })}
                 >
+                  <option value="" disabled selected hidden>
+                    ESCOLHE UM ASSUNTO
+                  </option>
                   <option className="" value="female">
-                    AULAS DE DANÇA{" "}
+                    AULAS DE DANÇA
                   </option>
                   <option value="male">CASAMENTOS</option>
                   <option value="other">EVENTOS</option>
                   <option value="female">OUTRO </option>
-                </select>
-                {errors.name && (
-                  <p className="mt-1 text-purple-lighter1">
-                    {errors.name.type === "required" &&
+                </select>{" "}
+                {errors.email && (
+                  <p className="mb-1 text-purple-lighter1">
+                    {errors.email.type === "required" &&
                       "Este campo necessita de ser preenchido."}
-                    {errors.name.type === "maxLength" &&
-                      "Este campo ultrapassa os 50 caracteres permitidos."}
+                    {errors.email.type === "pattern" &&
+                      "O Email inserido não é válido."}
                   </p>
                 )}
                 <input
@@ -110,12 +108,12 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                     pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   })}
                 />
-                {errors.email && (
-                  <p className="mt-1 text-purple-lighter1">
-                    {errors.email.type === "required" &&
+                {errors.message && (
+                  <p className="mb-1 text-purple-lighter1">
+                    {errors.message.type === "required" &&
                       "Este campo necessita de ser preenchido."}
-                    {errors.email.type === "pattern" &&
-                      "O Email inserido não é válido."}
+                    {errors.message.type === "maxLength" &&
+                      "Este campo ultrapassa os 2000 caracteres permitidos."}
                   </p>
                 )}
                 <textarea
@@ -125,19 +123,11 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                   cols={50}
                   {...register("message", { required: true, maxLength: 2000 })}
                 />
-                {errors.message && (
-                  <p className="mt-1 text-purple-lighter1">
-                    {errors.message.type === "required" &&
-                      "Este campo necessita de ser preenchido."}
-                    {errors.message.type === "maxLength" &&
-                      "Este campo ultrapassa os 2000 caracteres permitidos."}
-                  </p>
-                )}
                 <button
                   type="submit"
-                  className="bg-secondary hover:bg-primary-500 mt-5 rounded-lg px-20 py-3 transition duration-500 hover:text-white"
+                  className="rounded-md bg-gradient-to-tl  from-blue-darker to-purple-darker1 bg-size-200 bg-pos-0 px-10 py-2 text-white transition-all duration-500 hover:bg-pos-100 "
                 >
-                  SUBMIT
+                  Enviar
                 </button>
               </form>
             </motion.div>
